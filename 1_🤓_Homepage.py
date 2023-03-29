@@ -1,15 +1,30 @@
 import streamlit as st
 from PIL import Image
+import base64
 
-with st.sidebar:
-    selected = option(
-        menu_title="Main Menu"
-    )
 st.set_page_config(
     page_title="Home",
-    page_icon="👋",
+    page_icon="👋", initial_sidebar_state="expanded"
 )
 
+
+def add_logo(logo_url: str, height: int = 120):
+    logo = f"url(data:images/refresh_update_15608.png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
+    st.markdown(
+         f"""
+        <style>
+            [data-testid="stSidebarNav"] {{
+                background-image: {logo};
+                background-repeat: no-repeat;
+                padding-top: {height - 40}px;
+                background-position: 20px 20px;
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+st.markdown("# Home")
 st.title("Main Page")
 st.header("This is the header")
 st.subheader("This is the subheader")
