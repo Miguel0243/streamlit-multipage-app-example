@@ -1,6 +1,10 @@
 import streamlit as st
 from PIL import Image
 
+with st.sidebar:
+    selected = option(
+        menu_title="Main Menu"
+    )
 st.set_page_config(
     page_title="Home",
     page_icon="👋",
