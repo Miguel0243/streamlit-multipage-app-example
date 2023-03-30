@@ -1,8 +1,29 @@
 import streamlit as st
 import time
 import numpy as np
+import base64
+from pathlib import Path
 
 st.set_page_config(page_title="Projects", page_icon="📚")
+
+logo_url = "images/reynosa_logo1.png"
+logo = f"url(data:image/png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
+
+st.markdown(
+         f"""
+        <style>
+            [data-testid="stSidebarNav"] {{
+                background-image: {logo};
+                background-repeat: no-repeat;
+                padding-top: height - 40px;
+                background-position: 20px 20px;
+                background-size: 80%;
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+)
+
 st.header("TEST PAGINA WEB PROJECTS")
 st.title("Projects")
 st.sidebar.header("Projects")

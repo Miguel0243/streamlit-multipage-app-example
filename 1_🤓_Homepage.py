@@ -1,28 +1,30 @@
 import streamlit as st
 from PIL import Image
 import base64
+from pathlib import Path
 
 st.set_page_config(
     page_title="Home",
-    page_icon="👋", initial_sidebar_state="expanded"
+    page_icon="👋", initial_sidebar_state="expanded", layout="wide"
 )
 
+logo_url = "images/reynosa_logo1.png"
+logo = f"url(data:image/png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
 
-def add_logo(logo_url: str, height: int = 120):
-    logo = f"url(data:images/refresh_update_15608.png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
-    st.markdown(
+st.markdown(
          f"""
         <style>
             [data-testid="stSidebarNav"] {{
                 background-image: {logo};
                 background-repeat: no-repeat;
-                padding-top: {height - 40}px;
+                padding-top: height - 40px;
                 background-position: 20px 20px;
+                background-size: 80%;
             }}
         </style>
         """,
         unsafe_allow_html=True,
-    )
+)
 
 st.markdown("# Home")
 st.title("Main Page")
@@ -61,7 +63,7 @@ if(st.checkbox("Accept")):
 val = st.radio("Select a languaje", ('pthon','java'))
 st.write(val," was selected")
 
-img = Image.open("images/refresh_update_15608.png")
+img = Image.open("images/refresh.png")
 st.image(img)
 
 option = st.selectbox("Select an option",['python','java','react','node','sql'])

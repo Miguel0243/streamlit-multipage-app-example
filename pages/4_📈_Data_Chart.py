@@ -2,11 +2,47 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from urllib.error import URLError
+import base64
+from pathlib import Path
 
-st.set_page_config(page_title="Data Frame", page_icon="📈")
+st.set_page_config(page_title="Data Frame", page_icon="📈", layout="wide")
+
+logo_url = "images/reynosa_logo1.png"
+logo = f"url(data:image/png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
+
+st.markdown(
+         f"""
+        <style>
+            [data-testid="stSidebarNav"] {{
+                background-image: {logo};
+                background-repeat: no-repeat;
+                padding-top: height - 40px;
+                background-position: 20px 20px;
+                background-size: 80%;
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+)
 
 st.title("Data Chart")
 st.sidebar.header("Data Chart")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.header("Columna 1")
+    st.write("Contenido de la columna 1")
+
+with col2:
+    st.header("Columna 2")
+    st.write("Contnido de la columna 2")
+
+with col3:
+    st.header("Columna 3")
+    st.write("Contenido de la columna 3")
+
+
 
 @st.cache_data
 def get_UN_data():
