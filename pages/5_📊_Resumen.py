@@ -3,7 +3,7 @@ import base64
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Data Frame", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Resumen", page_icon="📊", layout="wide")
 
 page_bg_image = """
     <style>
@@ -19,17 +19,17 @@ page_bg_image = """
 """
 
 tabs = """
-        <style>
+    <style>
         [data-baseweb="tab"]{
             background-color: transparent;
         }
+    </style>
 """
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True) 
     st.markdown(page_bg_image,unsafe_allow_html=True)
-    st.markdown(tabs, 
-    unsafe_allow_html=True)
+    st.markdown(tabs, unsafe_allow_html=True)
 
 logo_url = "images/reynosa_logo1.png"
 logo = f"url(data:image/png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
@@ -84,4 +84,5 @@ with col3:
         st.write("Contratista"+" - "+"Fecha")
         st.caption("Texto de obra")
 
-tab1,tab2,tab3,tab4,tab5 = st.tabs(['General','Contratista','Supervisor de Obra','Responsable Subsecretaria de Obras Publicas','Responsable Director Supervision de Obras'])
+sesion2 = st.session_state["my_input"]
+st.write(sesion2)
