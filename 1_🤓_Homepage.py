@@ -42,7 +42,7 @@ st.write(range(20))
 channel = "Mike123coding"
 st.write("Subscribe to", channel)
 
-st.sidebar.success("Navega a traves del menú superior.")
+#st.sidebar.success("Navega a traves del menú superior.")
 
 if "my_input" not in st.session_state:
     st.session_state["my_input"] = ""
@@ -60,7 +60,7 @@ st.code(code_body,language="python")
 if(st.checkbox("Accept")):
     st.text("You aggreed the condition")
 
-val = st.radio("Select a languaje", ('pthon','java'))
+val = st.radio("Select a languaje", ('python','java'))
 st.write(val," was selected")
 
 img = Image.open("images/refresh.png")
