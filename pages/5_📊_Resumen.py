@@ -5,34 +5,22 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Resumen", page_icon="📊", layout="wide")
 
-page_bg_image = """
+page_bg_image = f"""
     <style>
-        [data-testid="stAppViewContainer"]{
-            background-color: #F5E2E2;
-            background-size:cover;
-        }
-
-        [data-testid="stHeader"]{
+        [data-testid="stHeader"]{{
             background-color: rgba(0,0,0,0);
-        }
-    </style>
-"""
-
-tabs = """
-    <style>
-        [data-baseweb="tab"]{
-            background-color: transparent;
-        }
+        }}
     </style>
 """
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True) 
     st.markdown(page_bg_image,unsafe_allow_html=True)
-    st.markdown(tabs, unsafe_allow_html=True)
 
 logo_url = "images/reynosa_logo1.png"
 logo = f"url(data:image/png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
+bg = "images/cultural1.jpg"
+bg1 = f"url(data:image/png;base64,{base64.b64encode(Path(bg).read_bytes()).decode()})"
 
 st.markdown(
          f"""
@@ -44,6 +32,13 @@ st.markdown(
                 background-position: 20px 20px;
                 background-size: 80%;
             }}
+
+            [data-testid="stAppViewContainer"]{{
+                background-color: #F5E2E2;
+                background-image: {bg1};
+                background-size:cover;
+                background-position: center;
+        }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -83,6 +78,3 @@ with col3:
     for element in mi_lista:
         st.write("Contratista"+" - "+"Fecha")
         st.caption("Texto de obra")
-
-sesion2 = st.session_state["my_input"]
-st.write(sesion2)

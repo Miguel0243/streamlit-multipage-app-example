@@ -33,6 +33,9 @@ with open('style.css') as f:
 logo_url = "images/reynosa_logo1.png"
 logo = f"url(data:image/png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
 
+bg = "images/cultural1.jpg"
+bg1 = f"url(data:image/png;base64,{base64.b64encode(Path(bg).read_bytes()).decode()})"
+
 st.markdown(
          f"""
         <style>
@@ -43,6 +46,13 @@ st.markdown(
                 background-position: 20px 20px;
                 background-size: 80%;
             }}
+
+            [data-testid="stAppViewContainer"]{{
+                background-color: #F5E2E2;
+                background-image: {bg1};
+                background-size:cover;
+                background-position: center;
+        }}
         </style>
         """,
         unsafe_allow_html=True,

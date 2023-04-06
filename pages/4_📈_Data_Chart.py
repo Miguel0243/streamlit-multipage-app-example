@@ -42,8 +42,6 @@ with col3:
     st.header("Columna 3")
     st.write("Contenido de la columna 3")
 
-
-
 @st.cache_data
 def get_UN_data():
     AWS_BUCKET_URL = "http://streamlit-demo-data.s3-us-west-2.amazonaws.com"
