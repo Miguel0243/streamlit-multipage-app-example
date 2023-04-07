@@ -1,12 +1,10 @@
 import streamlit as st
+import streamlit_authenticator as stauth
 from PIL import Image
 import base64
 from pathlib import Path
 
-st.set_page_config(
-    page_title="Home",
-    page_icon="👋", initial_sidebar_state="expanded", layout="wide"
-)
+st.set_page_config(page_title="Home",page_icon="👋", layout="wide")
 
 logo_url = "images/reynosa_logo1.png"
 logo = f"url(data:image/png;base64,{base64.b64encode(Path(logo_url).read_bytes()).decode()})"
@@ -25,6 +23,7 @@ st.markdown(
         """,
         unsafe_allow_html=True,
 )
+
 
 st.markdown("# Home")
 st.title("Main Page")
